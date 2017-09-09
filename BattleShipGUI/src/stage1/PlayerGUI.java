@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -93,6 +94,9 @@ public class PlayerGUI {
 	public void chooseShip(int ship) {
 		this.ship = ship;
 		switch (ship) {
+		case 0:
+			currentShip.setText("Ship: null");
+			break;
 		case 1:
 			currentShip.setText("Ship: Destroyer");
 			break;
@@ -128,37 +132,42 @@ public class PlayerGUI {
 		int x = coord.getX();
 		int y = coord.getY();		
 		boolean isPlaced = false;
-		Ship ship = null;
+		Ship chosen = null;
 		switch (this.ship) {
 		case 0:
 			return;
 		case 1:
 			isPlaced = player.placeDestroyer(x, y, this.direction);
-			ship = Ship.DESTROYER;
+			chosen = Ship.DESTROYER;
 			break;
 		case 2:
 			isPlaced = player.placeSubmarine(x, y, this.direction);
-			ship = Ship.SUBMARINE;
+			chosen = Ship.SUBMARINE;
 			break;
 		case 3:
 			isPlaced = player.placeCruiser(x, y, this.direction);
-			ship = Ship.CRUISER;
+			chosen = Ship.CRUISER;
 			break;
 		case 4:
 			isPlaced = player.placeBattleship(x, y, this.direction);
-			ship = Ship.BATTLESHIP;
+			chosen = Ship.BATTLESHIP;
 			break;
 		case 5:
 			isPlaced = player.placeCarrier(x, y, this.direction);
-			ship = Ship.CARRIER;
+			chosen = Ship.CARRIER;
 			break;
 		}		
-		if (isPlaced) 
-			for(int i=0; i<ship.getHealth(); i++) {
+		if (isPlaced) { 
+			for(int i=0; i<chosen.getHealth(); i++) {
 				int xx = x+i*this.direction.getDx();
 				int yy = y+i*this.direction.getDy();
-				button[xx][yy].setBackground(ship.getColor());
+				button[xx][yy].setBackground(chosen.getColor());
+			}		
+			for (ActionListener action: shipButtons[this.ship-1].getActionListeners()) {
+				shipButtons[this.ship-1].removeActionListener(action);	
 			}
-		System.out.printf("Place ship at %d %d with health %d\n", x, y, ship.getHealth());
+			chooseShip(0);
+			System.out.printf("Place ship at %d %d with health %d\n", x, y, chosen.getHealth());
+		}
 	}
 }
