@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 import Main.Player;
 import Main.Ship;
-import Main.ShootResult;
+import Main.Shoot;
 
 public class PlayerGUI extends JPanel{
 	
@@ -88,12 +88,12 @@ public class PlayerGUI extends JPanel{
 		return enemyGUI;
 	}
 	
-	public void shootAt(int x, int y, ShootResult result) {
+	public void shootAt(Shoot shoot) {
 		//TODO: Shoot enemy at (x, y)
 	}
 	
-	public ShootResult getShot(int x, int y) {
+	public Shoot getShot(int x, int y) {
 		//TODO: get shoot at (x, y);
-		return ShootResult.NONE;
+		return player.getShotAt(x, y);
 	}
 }

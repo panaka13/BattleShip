@@ -1,10 +1,12 @@
 package stage2;
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JLabel;
 
 import Main.Ship;
+import stage1.MainStage;
 
 public class MyShipStatus extends JLabel {
 	
@@ -13,18 +15,27 @@ public class MyShipStatus extends JLabel {
 	
 	public MyShipStatus(Ship ship) {
 		super();
+		this.setSize(new Dimension(MainStage.WIDTH-MainStage.WBOARD-20, 30));
+		this.setPreferredSize(this.getSize());
+		this.setMinimumSize(this.getSize());
+		this.setMaximumSize(this.getSize());
 		this.ship = ship;
 		switch (ship) {
 		case DESTROYER:
 			name = "DESTROYER ";
+			break;
 		case CRUISER:
 			name = "CRUISER ";
+			break;
 		case SUBMARINE:
 			name = "SUBAMRINE ";
+			break;
 		case BATTLESHIP:
 			name = "BATTLESHIP ";
+			break;
 		case CARRIER:
 			name = "CARRIER ";
+			break;
 		}
 		update();
 	}
@@ -32,9 +43,9 @@ public class MyShipStatus extends JLabel {
 	public void update() {
 		this.setText(String.format("%s%d", name, ship.getHealth()));
 		if (ship.getHealth() == 0) 
-			this.setBackground(Color.WHITE);
+			this.setForeground(Color.WHITE);
 		else
-			this.setBackground(ship.getColor());
+			this.setForeground(ship.getColor());
 		this.setVisible(true);
 	}
 }

@@ -53,7 +53,6 @@ public class MyCoord extends Button{
 			} else {
 				//TODO: remove ship;
 			}
-			System.out.println("Finish");
 		}
 	}
 }

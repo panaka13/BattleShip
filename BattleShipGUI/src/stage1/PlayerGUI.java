@@ -167,7 +167,6 @@ public class PlayerGUI {
 				shipButtons[this.ship-1].removeActionListener(action);	
 			}
 			chooseShip(0);
-			System.out.printf("Place ship at %d %d with health %d\n", x, y, chosen.getHealth());
 		}
 	}
 }

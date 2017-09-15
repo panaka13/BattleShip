@@ -31,5 +31,6 @@ public class MainStage extends JFrame {
 		panel.add(p2);
 		this.add(panel);
 		this.setVisible(true);
+		this.validate();
 	}
 }

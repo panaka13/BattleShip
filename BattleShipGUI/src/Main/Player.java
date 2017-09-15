@@ -30,7 +30,6 @@ public class Player {
 		this.name = name;
 		history = new LinkedList<Shoot>();
 		mine = new Ship[10][10];
-		createGUI();
 	}
 	
 	public Ship getSubmarine() {
@@ -208,69 +207,6 @@ public class Player {
 		if (carrier.getHealth() > 0)
 			return false;
 		return true;
-	}
-	
-	public void createGUI() {		
-		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
-//		panel.setSize(new Dimension(MainStage.WIDTH, MainStage.HBOARD));
-		panel.setBorder(new LineBorder(Color.BLACK));
-		
-		panel.removeAll();
-		
-		JPanel text = new JPanel();
-//		text.setSize(MainStage.WIDTH-MainStage.WBOARD, MainStage.HBOARD);
-		text.setLayout(new BoxLayout(text, BoxLayout.Y_AXIS));
-		text.setAlignmentX(Component.CENTER_ALIGNMENT);
-		
-		JLabel name = new JLabel(getName());
-		name.setAlignmentX(0.5f);
-		text.add(name);
-		text.add(Box.createRigidArea(new Dimension(0, 10)));
-		text.add(addShip(getDestroyer()));
-		text.add(Box.createRigidArea(new Dimension(0, 10)));
-		text.add(addShip(getSubmarine()));
-		text.add(Box.createRigidArea(new Dimension(0, 10)));
-		text.add(addShip(getCruiser()));
-		text.add(Box.createRigidArea(new Dimension(0, 10)));
-		text.add(addShip(getBattleship()));
-		text.add(Box.createRigidArea(new Dimension(0, 10)));
-		text.add(addShip(getCarrier()));
-		panel.add(text);
-		panel.validate();
-		panel.setPreferredSize(panel.getSize());
-		panel.setMaximumSize(panel.getSize());
-		panel.setMinimumSize(panel.getSize());
-		panel.setVisible(true);
-	}
-	
-	private JPanel addShip(Ship ship) {
-		JPanel panel = new JPanel(new FlowLayout());
-		JLabel name = null;
-		switch (ship) {
-		case DESTROYER:
-			name = new JLabel(String.format("Destroyer %d", ship.getHealth()));
-			name.setForeground(Color.RED);
-			break;
-		case SUBMARINE: 
-			name = new JLabel(String.format("Submarine %d", ship.getHealth()));
-			name.setForeground(Color.BLUE);
-			break;
-		case CRUISER:
-			name = new JLabel(String.format("Cruiser %d", ship.getHealth()));
-			name.setForeground(Color.ORANGE);
-			break;
-		case BATTLESHIP:
-			name = new JLabel(String.format("Battleship %d", ship.getHealth()));
-			name.setForeground(Color.GREEN);
-			break;
-		case CARRIER:
-			name = new JLabel(String.format("Carrier %d",  ship.getHealth()));
-			name.setForeground(Color.CYAN);
-			break;
-		}
-		panel.add(name);
-		panel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		return panel;
 	}
 	
 	public JPanel getPanel() {
