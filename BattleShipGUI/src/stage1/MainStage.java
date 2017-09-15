@@ -23,14 +23,15 @@ public class MainStage extends JFrame{
 			p2.show();
 		} else {
 			p2.hide();
-			//TODO: link to new stage.
+			Main.Test.stage1.dispose();
+			Main.Test.stage2 = new stage2.MainStage(p1.getPlayer(), p2.getPlayer());
 		}
 	}
 	
 	public MainStage(Player player1, Player player2) {
 		super();
 		this.setLayout(new GridLayout(2,1));
-//		this.setResizable(false);
+		this.setResizable(false);
 		this.setSize(new Dimension(WIDTH, HEIGHT));
 		this.setPreferredSize(this.getSize());
 		this.setMaximumSize(this.getSize());
