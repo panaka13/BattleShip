@@ -54,6 +54,8 @@ public class PlayerGUI extends JPanel{
 				myCells[x][y] = new MyCoord(x, y, this);
 				myBoard.add(myCells[x][y]);
 			}
+		this.add(myBoard);
+		this.add(myList);
 	}   
 	
 	public void addEnemy(PlayerGUI enemyGUI) {
