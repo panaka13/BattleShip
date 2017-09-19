@@ -18,6 +18,8 @@ public class MainStage extends JFrame {
 	private PlayerGUI p2;
 	private JPanel panel = new JPanel();
 	
+	//TODO: Check win / lose
+	
 	public MainStage(Player player1, Player player2) {
 		super();		
 		this.setSize(WIDTH, HEIGHT);
