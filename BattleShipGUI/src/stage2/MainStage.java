@@ -22,6 +22,7 @@ public class MainStage extends JFrame {
 		((CardLayout) panel.getLayout()).next(panel);
 		this.validate();
 	}
+
 	//TODO: Check win / lose
 	
 	public MainStage(Player player1, Player player2) {
