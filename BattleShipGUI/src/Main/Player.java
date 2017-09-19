@@ -1,18 +1,7 @@
 package Main;
 
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.Component;
-import java.awt.Dimension;
 import java.util.LinkedList;
 import java.util.List;
-
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
 public class Player {
 	protected Ship submarine = Ship.SUBMARINE; //1
@@ -24,7 +13,6 @@ public class Player {
 	protected List<Shoot> history;
 	protected Ship[][] mine;
 	protected int[][] enemy;
-	protected JPanel panel = new JPanel();
 	
 	public Player(String name) {
 		this.name = name;
@@ -207,18 +195,6 @@ public class Player {
 		if (carrier.getHealth() > 0)
 			return false;
 		return true;
-	}
-	
-	public JPanel getPanel() {
-		return panel;
-	}
-	
-	public void showGUI() {
-		panel.setVisible(true);
-	}
-	
-	public void hideGUI() {
-		panel.setVisible(false);
 	}
 	
 	public Ship getMyBoard(int x, int y) { 
