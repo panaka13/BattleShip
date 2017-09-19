@@ -89,7 +89,23 @@ public class PlayerGUI extends JPanel{
 	}
 	
 	public void shootAt(Shoot shoot) {
-		//TODO: Shoot enemy at (x, y)
+		switch (shoot.getResult()) {
+		case DESTROYER:
+			eShips[0].update();
+			break;
+		case SUBMARINE:
+			eShips[1].update();
+			break;
+		case CRUISER:
+			eShips[2].update();
+			break;
+		case BATTLESHIP:
+			eShips[3].update();
+			break;
+		case CARRIER:
+			eShips[4].update();
+			break;
+		}
 	}
 	
 	public Shoot getShot(int x, int y) {
