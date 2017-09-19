@@ -67,6 +67,7 @@ public class MyEnemyCoord extends Button {
 			update(shot.getResult());
 			button.getMyGUI().shootAt(shot);
 			System.out.printf("Get shot at %d %d\n", button.getCoord().getX(), button.getCoord().getY());
+			Main.Test.stage2.changeTurn();
 		}
 	}
 }

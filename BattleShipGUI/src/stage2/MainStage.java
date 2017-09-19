@@ -18,9 +18,15 @@ public class MainStage extends JFrame {
 	private PlayerGUI p2;
 	private JPanel panel = new JPanel();
 	
+	public void changeTurn() {
+		((CardLayout) panel.getLayout()).next(panel);
+		this.validate();
+	}
+	
 	public MainStage(Player player1, Player player2) {
 		super();		
 		this.setSize(WIDTH, HEIGHT);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		panel.setSize(new Dimension(WIDTH, HEIGHT));
 		panel.setLayout(new CardLayout());
 		p1 = new PlayerGUI(player1);

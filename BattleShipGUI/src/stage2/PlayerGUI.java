@@ -94,6 +94,7 @@ public class PlayerGUI extends JPanel{
 	
 	public Shoot getShot(int x, int y) {
 		//TODO: get shoot at (x, y);
-		return player.getShotAt(x, y);
+		Shoot shot = player.getShotAt(x, y);
+		return shot;
 	}
 }
