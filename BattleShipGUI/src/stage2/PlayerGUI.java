@@ -1,5 +1,6 @@
 package stage2;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -7,10 +8,12 @@ import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import Main.Player;
 import Main.Ship;
 import Main.Shoot;
+import Main.ShootResult;
 
 public class PlayerGUI extends JPanel{
 	
@@ -51,6 +54,7 @@ public class PlayerGUI extends JPanel{
 		myBoard.setMinimumSize(myBoard.getSize());
 		myBoard.setMaximumSize(myBoard.getSize());
 		myBoard.setPreferredSize(myBoard.getSize());
+		myBoard.setBorder(new LineBorder(Color.BLUE));
 		for(int x=0; x<10; x++)
 			for(int y=0; y<10; y++) {
 				myCells[x][y] = new MyCoord(x, y, this);
@@ -76,10 +80,13 @@ public class PlayerGUI extends JPanel{
 		eList.setLayout(new BoxLayout(eList, BoxLayout.Y_AXIS));
 		eList.setAlignmentY(0.5f);
 		eList.add(new JLabel(enemyGUI.getPlayer().getName()));
-		for(int i=0; i<5; i++) {
-			eShips[i] = new MyEnemyShipStatus(i);
+		eShips[0] = new MyEnemyShipStatus(enemyGUI.getPlayer().getDestroyer());
+		eShips[1] = new MyEnemyShipStatus(enemyGUI.getPlayer().getSubmarine());
+		eShips[2] = new MyEnemyShipStatus(enemyGUI.getPlayer().getCruiser());
+		eShips[3] = new MyEnemyShipStatus(enemyGUI.getPlayer().getBattleship());
+		eShips[4] = new MyEnemyShipStatus(enemyGUI.getPlayer().getCarrier());
+		for(int i=0; i<5; i++) 
 			eList.add(eShips[i]);
-		}
 		this.add(eBoard);
 		this.add(eList);
 		if (isReverse) {
@@ -117,13 +124,11 @@ public class PlayerGUI extends JPanel{
 	}
 	
 	public Shoot getShot(int x, int y) {
-		//TODO: get shoot at (x, y);
 		Shoot shot = player.getShotAt(x, y);
-		System.out.println(player.getDestroyer().hashCode());
-		System.out.println(player.getSubmarine());
-		System.out.println(player.getCruiser());
-		System.out.println(player.getBattleship());
-		System.out.println(player.getCarrier());
+		if (shot.getResult() != ShootResult.MISS)
+			for(int i=0; i<5; i++)
+				myShips[i].update();
+		myCells[x][y].update();
 		return shot;
 	}
 }

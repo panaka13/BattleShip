@@ -138,23 +138,23 @@ public class PlayerGUI {
 			return;
 		case 1:
 			isPlaced = player.placeDestroyer(x, y, this.direction);
-			chosen = Ship.DESTROYER;
+			chosen = player.getDestroyer();
 			break;
 		case 2:
 			isPlaced = player.placeSubmarine(x, y, this.direction);
-			chosen = Ship.SUBMARINE;
+			chosen = player.getSubmarine();
 			break;
 		case 3:
 			isPlaced = player.placeCruiser(x, y, this.direction);
-			chosen = Ship.CRUISER;
+			chosen = player.getCruiser();
 			break;
 		case 4:
 			isPlaced = player.placeBattleship(x, y, this.direction);
-			chosen = Ship.BATTLESHIP;
+			chosen = player.getBattleship();
 			break;
 		case 5:
 			isPlaced = player.placeCarrier(x, y, this.direction);
-			chosen = Ship.CARRIER;
+			chosen = player.getCarrier();
 			break;
 		}		
 		if (isPlaced) { 

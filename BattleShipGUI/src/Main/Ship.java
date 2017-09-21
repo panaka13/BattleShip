@@ -2,13 +2,14 @@ package Main;
 
 import java.awt.Color;
 
-public enum Ship {
-	CARRIER(5, Color.CYAN),
-	BATTLESHIP(4, Color.GREEN),
-	CRUISER(3, Color.ORANGE),
-	SUBMARINE(3, Color.BLUE),
-	DESTROYER(2, Color.RED),
-	HIT(0, Color.BLACK);
+public abstract class Ship {
+	
+//	CARRIER(5, Color.CYAN),
+//	BATTLESHIP(4, Color.GREEN),
+//	CRUISER(3, Color.ORANGE),
+//	SUBMARINE(3, Color.BLUE),
+//	DESTROYER(2, Color.RED),
+//	HIT(0, Color.BLACK);
 	
 	private int health;
 	private Coord position;
@@ -56,4 +57,5 @@ public enum Ship {
 		return color;
 	}
 	
+	public abstract String getName();
 }

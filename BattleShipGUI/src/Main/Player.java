@@ -4,11 +4,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Player {
-	protected Ship submarine = Ship.SUBMARINE; //1
-	protected Ship destroyer = Ship.DESTROYER; //2
-	protected Ship cruiser = Ship.CRUISER; //3
-	protected Ship battleship = Ship.BATTLESHIP; //4
-	protected Ship carrier = Ship.CARRIER; //5
+	protected Ship submarine = new Submarine(); //2
+	protected Ship destroyer = new Destroyer(); //1
+	protected Ship cruiser = new Cruiser(); //3
+	protected Ship battleship = new Battleship(); //4
+	protected Ship carrier = new Carrier(); //5
 	protected String name;
 	protected List<Shoot> history;
 	protected Ship[][] mine;
@@ -151,31 +151,31 @@ public class Player {
 		int x = position.getX();
 		int y = position.getY();
 		if (mine[x][y] == null) {
-			mine[x][y] = Ship.HIT;
+			mine[x][y] = new ShipHit();
 			return new Shoot(position, ShootResult.MISS);
 		}
-		switch (mine[x][y]) {
-		case SUBMARINE:
+		switch (mine[x][y].getName()) {
+		case "Submarine":
 			submarine.getHit();
 			if (submarine.isDestroyed())
 				result = ShootResult.SUBMARINE;
 			break;
-		case DESTROYER:
+		case "Destroyer":
 			destroyer.getHit();
 			if (destroyer.isDestroyed())
 				result = ShootResult.DESTROYER;
 			break;
-		case CRUISER:
+		case "Cruiser":
 			cruiser.getHit();
 			if (cruiser.isDestroyed())
 				result = ShootResult.CRUISER;
 			break;
-		case BATTLESHIP:
+		case "Battleship":
 			battleship.getHit();
 			if (battleship.isDestroyed())
 				result = ShootResult.BATTLESHIP;
 			break;
-		case CARRIER:
+		case "Carrier":
 			carrier.getHit();
 			if (carrier.isDestroyed())
 				result = ShootResult.CARRIER;
@@ -184,6 +184,7 @@ public class Player {
 			result = ShootResult.MISS;
 			break;
 		}
+		mine[x][y] = new ShipHit();
 		return new Shoot(position, result);
 	}
 	

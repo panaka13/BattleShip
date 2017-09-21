@@ -10,12 +10,17 @@ public class Computer extends Player {
 	private int heso;
 	private int[][] score;
 	private int[][] enemy;
-	private Ship[] ships = {Ship.DESTROYER, Ship.SUBMARINE, Ship.CRUISER, Ship.BATTLESHIP, Ship.CARRIER};
+	private Ship[] ships = new Ship[5];
 
 	public Computer(int level) {
 		super("Computer");
 		heso = 35;
 		score = new int[10][10];
+		ships[0] = new Destroyer();
+		ships[1] = new Submarine();
+		ships[2] = new Cruiser();
+		ships[3] = new Battleship();
+		ships[4] = new Carrier();
 	}
 	
 	Coord findPosition() {

@@ -13,39 +13,21 @@ public class MyEnemyShipStatus extends JLabel {
 	private Ship ship;
 	private String name;
 	
-	public MyEnemyShipStatus(int ship) {
+	public MyEnemyShipStatus(Ship ship) {
 		super();		
 		this.setSize(new Dimension(MainStage.WIDTH-MainStage.WBOARD-20, 30));
 		this.setPreferredSize(this.getSize());
 		this.setMinimumSize(this.getSize());
 		this.setMaximumSize(this.getSize());
-		switch (ship) {
-		case 0:
-			name = "DESTROYER ";
-			this.ship = Ship.DESTROYER;
-			break;
-		case 1:
-			name = "SUBMARINE ";
-			this.ship = Ship.SUBMARINE;
-			break;
-		case 2:
-			name = "CRUISER ";
-			this.ship = Ship.CRUISER;
-			break;
-		case 3:
-			name = "BATTLESHIP ";
-			this.ship = Ship.BATTLESHIP;
-			break;
-		case 4:
-			name = "CARRIER ";
-			this.ship = Ship.CARRIER;
-			break;
-		}
+		this.ship = ship;
+		this.name = ship.getName();
 		update();
 	}
 	
 	public void update() {
-		this.setText(String.format("%s%d", name, ship.getHealth()));
+		if (ship == null) 
+			return;
+		this.setText(String.format("%s %d", name, ship.getHealth()));
 		if (ship.getHealth() == 0) 
 			this.setForeground(Color.WHITE);
 		else

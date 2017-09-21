@@ -20,28 +20,14 @@ public class MyShipStatus extends JLabel {
 		this.setMinimumSize(this.getSize());
 		this.setMaximumSize(this.getSize());
 		this.ship = ship;
-		switch (ship) {
-		case DESTROYER:
-			name = "DESTROYER ";
-			break;
-		case CRUISER:
-			name = "CRUISER ";
-			break;
-		case SUBMARINE:
-			name = "SUBAMRINE ";
-			break;
-		case BATTLESHIP:
-			name = "BATTLESHIP ";
-			break;
-		case CARRIER:
-			name = "CARRIER ";
-			break;
-		}
+		this.name = ship.getName();
 		update();
 	}
 	
 	public void update() {
-		this.setText(String.format("%s%d", name, ship.getHealth()));
+		if (ship == null)
+			return;
+		this.setText(String.format("%s %d", name, ship.getHealth()));
 		if (ship.getHealth() == 0) 
 			this.setForeground(Color.WHITE);
 		else
