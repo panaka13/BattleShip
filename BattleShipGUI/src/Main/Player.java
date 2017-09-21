@@ -150,8 +150,10 @@ public class Player {
 		ShootResult result = ShootResult.HIT;
 		int x = position.getX();
 		int y = position.getY();
-		if (mine[x][y] == null)
+		if (mine[x][y] == null) {
+			mine[x][y] = Ship.HIT;
 			return new Shoot(position, ShootResult.MISS);
+		}
 		switch (mine[x][y]) {
 		case SUBMARINE:
 			submarine.getHit();

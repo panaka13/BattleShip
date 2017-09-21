@@ -24,9 +24,11 @@ public class PlayerGUI extends JPanel{
 	private JPanel eList = new JPanel();
 	private MyShipStatus[] myShips = new MyShipStatus[5];
 	private MyEnemyShipStatus[] eShips = new MyEnemyShipStatus[5];
+	private boolean isReverse;
 	
-	public PlayerGUI(Player me) {
+	public PlayerGUI(Player me, boolean isReverse) {
 		super();
+		this.isReverse = isReverse;
 		this.player = me;
 		this.setSize(new Dimension(MainStage.WIDTH, MainStage.HEIGHT));
 		this.setMaximumSize(this.getSize());
@@ -54,8 +56,10 @@ public class PlayerGUI extends JPanel{
 				myCells[x][y] = new MyCoord(x, y, this);
 				myBoard.add(myCells[x][y]);
 			}
-		this.add(myBoard);
-		this.add(myList);
+		if (!isReverse) {
+			this.add(myBoard);
+			this.add(myList);
+		}
 	}   
 	
 	public void addEnemy(PlayerGUI enemyGUI) {
@@ -78,6 +82,10 @@ public class PlayerGUI extends JPanel{
 		}
 		this.add(eBoard);
 		this.add(eList);
+		if (isReverse) {
+			this.add(myBoard);
+			this.add(myList);
+		}
 	}
 
 	public Player getPlayer() {
@@ -111,6 +119,11 @@ public class PlayerGUI extends JPanel{
 	public Shoot getShot(int x, int y) {
 		//TODO: get shoot at (x, y);
 		Shoot shot = player.getShotAt(x, y);
+		System.out.println(player.getDestroyer().hashCode());
+		System.out.println(player.getSubmarine());
+		System.out.println(player.getCruiser());
+		System.out.println(player.getBattleship());
+		System.out.println(player.getCarrier());
 		return shot;
 	}
 }

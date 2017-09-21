@@ -7,7 +7,8 @@ public enum Ship {
 	BATTLESHIP(4, Color.GREEN),
 	CRUISER(3, Color.ORANGE),
 	SUBMARINE(3, Color.BLUE),
-	DESTROYER(2, Color.RED);
+	DESTROYER(2, Color.RED),
+	HIT(0, Color.BLACK);
 	
 	private int health;
 	private Coord position;
