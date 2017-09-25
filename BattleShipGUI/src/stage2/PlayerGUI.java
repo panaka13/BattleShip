@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import GeneralGUI.Notification;
 import Main.Player;
 import Main.Ship;
 import Main.Shoot;
@@ -104,21 +105,43 @@ public class PlayerGUI extends JPanel{
 	}
 	
 	public void shootAt(Shoot shoot) {
+
 		switch (shoot.getResult()) {
 		case DESTROYER:
 			eShips[0].update();
+			if (isWon()) {
+				new Notification(new String[]{"Destroyer killed", "You win the game"});
+				System.out.println(player);
+				System.out.println(enemyGUI.getPlayer());
+				Main.Test.stage2.endGame(player, enemyGUI.getPlayer());
+			} else 
+				new Notification(new String[] {"Destroyer killed"});
 			break;
 		case SUBMARINE:
 			eShips[1].update();
+			if (isWon()) {
+				new Notification(new String[]{"Submarine killed", "You win the game"});
+				Main.Test.stage2.endGame(player, enemyGUI.getPlayer());
+			}
+				new Notification(new String[] {"Submarine killed"});
 			break;
 		case CRUISER:
 			eShips[2].update();
+			new Notification(new String[]{"Cruiser killed"});
 			break;
 		case BATTLESHIP:
 			eShips[3].update();
+			new Notification(new String[]{"Battleship killed"});
 			break;
 		case CARRIER:
 			eShips[4].update();
+			new Notification(new String[]{"Carrier killed"});
+			break;
+		case MISS:
+			new Notification(new String[]{"You miss your target"});
+			break;
+		case HIT:
+			new Notification(new String[]{"You hit your target"});
 			break;
 		}
 	}
@@ -130,5 +153,13 @@ public class PlayerGUI extends JPanel{
 				myShips[i].update();
 		myCells[x][y].update();
 		return shot;
+	}
+	
+	public boolean isLost() {
+		return player.isLost();
+	}
+	
+	private boolean isWon() {
+		return enemyGUI.isLost();
 	}
 }

@@ -60,14 +60,14 @@ public class MyEnemyCoord extends Button {
 	
 	private class ClickAction implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			if (!GeneralGUI.ControlResponse.isResponsive())
+				return;
 			MyEnemyCoord button = (MyEnemyCoord) e.getSource();
 			int x = button.getCoord().getX();
 			int y = button.getCoord().getY();
 			Shoot shot = button.getEnemyGUI().getShot(x, y);
 			update(shot.getResult());
 			button.getMyGUI().shootAt(shot);
-//			System.out.printf("Get shot at %d %d\n", button.getCoord().getX(), button.getCoord().getY());
-			Main.Test.stage2.changeTurn();
 		}
 	}
 }

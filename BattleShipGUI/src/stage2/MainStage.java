@@ -23,12 +23,18 @@ public class MainStage extends JFrame {
 		this.validate();
 	}
 
-	//TODO: Check win / lose
+	//TODO: win / lose
+    public void endGame(Player winner, Player loser) {
+    	this.dispose();
+    	Main.Test.stage3 = new stage3.MainStage(winner, loser);
+    }
+    
 	
 	public MainStage(Player player1, Player player2) {
 		super();		
 		this.setSize(WIDTH, HEIGHT);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setResizable(false);
 		panel.setSize(new Dimension(WIDTH, HEIGHT));
 		panel.setLayout(new CardLayout());
 		p1 = new PlayerGUI(player1, false);

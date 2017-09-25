@@ -188,17 +188,17 @@ public class Player {
 		return new Shoot(position, result);
 	}
 	
-	public boolean isLost() {
-		if (submarine.getHealth() > 0) 
-			return false;
+	public boolean isLost() {		
 		if (destroyer.getHealth() > 0)
 			return false;
-		if (cruiser.getHealth() > 0)
-			return false;
-		if (battleship.getHealth() > 0)
-			return false;
-		if (carrier.getHealth() > 0)
-			return false;
+//		if (submarine.getHealth() > 0) 
+//			return false;
+//		if (cruiser.getHealth() > 0)
+//			return false;
+//		if (battleship.getHealth() > 0)
+//			return false;
+//		if (carrier.getHealth() > 0)
+//			return false;
 		return true;
 	}
 	

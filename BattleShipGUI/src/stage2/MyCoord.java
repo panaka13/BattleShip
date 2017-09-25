@@ -14,7 +14,7 @@ public class MyCoord extends Button{
 	public MyCoord(int x, int y, PlayerGUI playerGUI) {
 		super();
 		this.setSize(30, 30);
-		this.setLabel(Integer.toString(x*10+y));
+//		this.setLabel(Integer.toString(x*10+y));
 		this.coord = new Coord(x, y);
 		this.playerGUI = playerGUI;
 		update();

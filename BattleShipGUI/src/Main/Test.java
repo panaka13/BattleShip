@@ -9,6 +9,7 @@ public class Test {
 	
 	public static stage1.MainStage stage1;
 	public static stage2.MainStage stage2;
+	public static stage3.MainStage stage3;
 	
 	public static void main(String[] args) {
 		Player p1 = new Player("Panaka_13");
